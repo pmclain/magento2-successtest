@@ -1,0 +1,21 @@
+{
+  "name": "pmclain/magento2-successtest",
+  "description": "Magento 2 Checkout Success Page Testing",
+  "type": "magento2-module",
+  "license": [
+    "GPL-3.0"
+  ],
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0",
+    "magento/module-checkout": "~100.0.0|~100.1.0|~100.2.0",
+    "magento/module-backend": "~100.0.0|~100.1.0|~100.2.0"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Pmclain\\SuccessTest\\": ""
+    }
+  }
+}
