@@ -16,9 +16,7 @@
  */
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-  <type name="Magento\Checkout\Controller\Onepage\Success">
-    <plugin name="pmclain_successtest_checkout_controller_onepage_success"
-            type="Pmclain\SuccessTest\Plugin\Success"
-            sortOrder="10" />
-  </type>
+    <type name="Magento\Checkout\Controller\Onepage\Success">
+        <plugin name="pmclain_successtest_checkout_controller_onepage_success" type="Pmclain\SuccessTest\Plugin\Success"/>
+    </type>
 </config>

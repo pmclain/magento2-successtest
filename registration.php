@@ -14,7 +14,7 @@
  * @license   Open Software License (OSL 3.0)
  */
 \Magento\Framework\Component\ComponentRegistrar::register(
-  \Magento\Framework\Component\ComponentRegistrar::MODULE,
-  'Pmclain_SuccessTest',
-  __DIR__
+    \Magento\Framework\Component\ComponentRegistrar::MODULE,
+    'Pmclain_SuccessTest',
+    __DIR__
 );
