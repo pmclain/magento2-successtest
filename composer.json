@@ -3,7 +3,7 @@
   "description": "Magento 2 Checkout Success Page Testing",
   "type": "magento2-module",
   "license": [
-    "GPL-3.0"
+    "OSL-3.0"
   ],
   "require": {
     "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0",
