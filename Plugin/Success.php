@@ -16,66 +16,32 @@
 
 namespace Pmclain\SuccessTest\Plugin;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Store\Model\ScopeInterface;
-use Magento\Checkout\Model\Session;
-use Magento\Sales\Model\OrderFactory;
-use Magento\Sales\Model\Order;
+use Pmclain\SuccessTest\Model\GenerateSuccessPage;
+use Pmclain\SuccessTest\Model\Config;
 
 class Success
 {
     /**
-     * @var ManagerInterface
+     * @var GenerateSuccessPage
      */
-    private $eventManager;
+    private $generateSuccessPage;
 
     /**
-     * @var PageFactory
+     * @var Config
      */
-    private $resultPageFactory;
+    private $config;
 
     /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
-
-    /**
-     * @var OrderFactory
-     */
-    private $orderFactory;
-
-    /**
-     * @var Order
-     */
-    private $order;
-
-    /**
-     * @var Session
-     */
-    private $checkoutSession;
-
-    /**
-     * Success constructor.
-     * @param ManagerInterface $eventManager
-     * @param PageFactory $resultPageFactory
-     * @param ScopeConfigInterface $scopeConfig
-     * @param OrderFactory $orderFactory
-     * @param Session $session
+     * @param GenerateSuccessPage $generateSuccessPage
+     * @param Config $config
      */
     public function __construct(
-        ManagerInterface $eventManager,
-        PageFactory $resultPageFactory,
-        ScopeConfigInterface $scopeConfig,
-        OrderFactory $orderFactory,
-        Session $session
+        GenerateSuccessPage $generateSuccessPage,
+        Config $config
     ) {
-        $this->eventManager = $eventManager;
-        $this->resultPageFactory = $resultPageFactory;
-        $this->scopeConfig = $scopeConfig;
-        $this->orderFactory = $orderFactory;
-        $this->checkoutSession = $session;
+
+        $this->generateSuccessPage = $generateSuccessPage;
+        $this->config = $config;
     }
 
     /**
@@ -85,51 +51,12 @@ class Success
      */
     public function afterExecute(\Magento\Checkout\Controller\Onepage\Success $subject, $result)
     {
-        if (!$this->isEnabled()) {
+        if (!$this->config->isEnabled()) {
             return $result;
         }
 
-        $order = $this->getTestOrder($subject->getRequest()->getParam('order'));
+        $request = $subject->getRequest();
 
-        if (!$order->getId()) {
-            return $result;
-        }
-
-        $this->checkoutSession->setLastRealOrderId($order->getIncrementId());
-
-        $resultPage = $this->resultPageFactory->create();
-
-        $this->eventManager->dispatch(
-            'checkout_onepage_controller_success_action',
-            ['order_ids' => [$order->getId()]]
-        );
-
-        return $resultPage;
-    }
-
-    /**
-     * @return bool
-     */
-    private function isEnabled()
-    {
-        if ($this->scopeConfig->getValue('dev/debug/success_test', ScopeInterface::SCOPE_STORE)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param $incrementId string|bool
-     * @return Order
-     */
-    private function getTestOrder($incrementId)
-    {
-        /** @var Order $order */
-        $order = $this->orderFactory->create();
-
-        $order->loadByIncrementId($incrementId);
-
-        return $order;
+        return $this->generateSuccessPage->execute($request->getParam('order'), $request->getParam('key')) ?? $result;
     }
 }

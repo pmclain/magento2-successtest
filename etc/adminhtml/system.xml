@@ -24,6 +24,10 @@
                     <label>Enable Checkout Success Page Testing</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="success_test_secure_key_refresh" translate="label" type="button" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Success Test Secure Key</label>
+                    <frontend_model>Pmclain\SuccessTest\Block\Adminhtml\System\Config\CreateNewKey</frontend_model>
+                </field>
             </group>
         </section>
     </system>
