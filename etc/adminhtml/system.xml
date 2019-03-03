@@ -4,26 +4,31 @@
  * Pmclain_SuccessTest extension
  * NOTICE OF LICENSE
  *
- * This source file is subject to the GPL v3 License
+ * This source file is subject to the OSL v3 License
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
- * https://www.gnu.org/licenses/gpl.txt
+ * https://opensource.org/licenses/osl-3.0.php
  *
  * @category  Pmclain
  * @package   Pmclain_SuccessTest
- * @copyright Copyright (c) 2017
- * @license   https://www.gnu.org/licenses/gpl.txt GPL v3 License
+ * @copyright Copyright (c) 2017-2019
+ * @license   Open Software License (OSL 3.0)
  */
  -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
-  <system>
-    <section id="dev">
-      <group id="debug">
-        <field id="success_test" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
-          <label>Enable Checkout Success Page Testing</label>
-          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-        </field>
-      </group>
-    </section>
-  </system>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="dev">
+            <group id="debug">
+                <field id="success_test" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Checkout Success Page Testing</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="success_test_secure_key_refresh" translate="label" type="button" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Success Test Secure Key</label>
+                    <frontend_model>Pmclain\SuccessTest\Block\Adminhtml\System\Config\CreateNewKey</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
 </config>

@@ -1,0 +1,50 @@
+<?php
+/**
+ * Pmclain_SuccessTest extension
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the OSL v3 License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * https://opensource.org/licenses/osl-3.0.php
+ *
+ * @category  Pmclain
+ * @package   Pmclain_SuccessTest
+ * @copyright Copyright (c) 2017-2019
+ * @license   Open Software License (OSL 3.0)
+ */
+/** @var \Pmclain\SuccessTest\Block\Adminhtml\System\Config\CreateNewKey $block */
+?>
+<script>
+require([
+    'jquery',
+    'prototype',
+], function($){
+    jQuery('#refresh_success_test_secure_key').click(function () {
+        var params = {
+            form_key: '<?php echo $block->getFormKey() ?>',
+            isAjax: true
+        };
+
+        $.ajax({
+            showLoader: true,
+            url: "<?php echo $block->getAjaxUrl() ?>",
+            data: params,
+            dataType: 'json'
+        }).done(function (data) {
+            window.location.reload();
+        });
+    });
+});
+</script>
+
+<?php if ($block->getSecureKey()): ?>
+    <p><?= __('Current secure key: <span id="success_test_key"><strong>%1</strong></span>', $block->getSecureKey()) ?></p>
+    <p><?= __('Secure key must be included as a query parameter eg:') ?></p>
+    <p><?= $block->getBaseUrl() . 'checkout/onepage/success/key/' . $block->getSecureKey() . '/order/100000008' ?></p>
+<?php else: ?>
+    <p><?= __('Click the button below to generate the required secure key.') ?></p>
+<?php endif; ?>
+
+
+<?= $block->getButtonHtml() ?>
