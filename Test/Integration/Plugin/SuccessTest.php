@@ -21,8 +21,8 @@ class SuccessTest extends \Magento\TestFramework\TestCase\AbstractController
 {
     /**
      * Test redirect when module is disabled
-     * @magentoConfigFixture default_store dev/debug/success_test 0
-     * @magentoConfigFixture default_store dev/debug/success_test_secure_key 123456789012
+     * @magentoConfigFixture default_store sales/success_test/enable 0
+     * @magentoConfigFixture default_store sales/success_test/secure_key 123456789012
      * @magentoDataFixture Magento/Sales/_files/order.php
      */
     public function testLoadSuccessWithModuleDisabled(): void
@@ -38,8 +38,8 @@ class SuccessTest extends \Magento\TestFramework\TestCase\AbstractController
 
     /**
      * Test redirect when module is enabled and valid key provided
-     * @magentoConfigFixture default_store dev/debug/success_test 1
-     * @magentoConfigFixture default_store dev/debug/success_test_secure_key 123456789012
+     * @magentoConfigFixture default_store sales/success_test/enable 1
+     * @magentoConfigFixture default_store sales/success_test/secure_key 123456789012
      * @magentoDataFixture Magento/Sales/_files/order.php
      */
     public function testLoadSuccessWithModuleEnabled(): void
@@ -55,8 +55,8 @@ class SuccessTest extends \Magento\TestFramework\TestCase\AbstractController
 
     /**
      * Test redirect when module is enabled and invalid key provided
-     * @magentoConfigFixture default_store dev/debug/success_test 1
-     * @magentoConfigFixture default_store dev/debug/success_test_secure_key 123456789012
+     * @magentoConfigFixture default_store sales/success_test/enable 1
+     * @magentoConfigFixture default_store sales/success_test/secure_key 123456789012
      * @magentoDataFixture Magento/Sales/_files/order.php
      */
     public function testLoadSuccessWithModuleEnabledInvalidKey(): void
@@ -72,8 +72,8 @@ class SuccessTest extends \Magento\TestFramework\TestCase\AbstractController
 
     /**
      * Test redirect when module is enabled and invalid key provided
-     * @magentoConfigFixture default_store dev/debug/success_test 1
-     * @magentoConfigFixture default_store dev/debug/success_test_secure_key 123456789012
+     * @magentoConfigFixture default_store sales/success_test/enable 1
+     * @magentoConfigFixture default_store sales/success_test/secure_key 123456789012
      * @magentoDataFixture Magento/Sales/_files/order.php
      */
     public function testLoadSuccessWithModuleEnabledValidKeyNoSuchOrder(): void
