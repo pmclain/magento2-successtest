@@ -22,8 +22,8 @@ use Magento\Store\Model\ScopeInterface;
 
 class Config
 {
-    const PATH_SUCCESS_TEST_ENABLE = 'dev/debug/success_test';
-    const PATH_SUCCESS_TEST_SECURE_KEY = 'dev/debug/success_test_secure_key';
+    const PATH_SUCCESS_TEST_ENABLE = 'sales/success_test/enable';
+    const PATH_SUCCESS_TEST_SECURE_KEY = 'sales/success_test/secure_key';
     const SECURE_KEY_LENGTH = 12;
 
     /**

@@ -18,13 +18,14 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="dev">
-            <group id="debug">
-                <field id="success_test" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+        <section id="sales">
+            <group id="success_test" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Success Page Test</label>
+                <field id="enable" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Enable Checkout Success Page Testing</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="success_test_secure_key_refresh" translate="label" type="button" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="secure_key_refresh" translate="label" type="button" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Success Test Secure Key</label>
                     <frontend_model>Pmclain\SuccessTest\Block\Adminhtml\System\Config\CreateNewKey</frontend_model>
                 </field>
