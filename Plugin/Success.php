@@ -57,6 +57,6 @@ class Success
 
         $request = $subject->getRequest();
 
-        return $this->generateSuccessPage->execute($request->getParam('order'), $request->getParam('key')) ?? $result;
+        return $this->generateSuccessPage->execute($request->getParam('order', ''), $request->getParam('key', '')) ?? $result;
     }
 }
